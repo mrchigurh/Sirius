@@ -509,8 +509,14 @@ function InstanceObject:Render()
 		text.Visible = false;
 		return;
 	end
-
-	local world = getPivot(instance).Position;
+	
+	local world
+	if instance.ClassName == 'CFrameValue' then
+		world = instance.Value.Position;
+	else
+		world = getPivot(instance).Position;
+	end
+	
 	local position, visible, depth = worldToScreen(world);
 	if options.limitDistance and depth > options.maxDistance then
 		visible = false;
