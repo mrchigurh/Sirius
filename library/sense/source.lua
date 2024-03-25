@@ -178,10 +178,8 @@ function EspObject:Construct()
 	};
 
 	self.renderConnection = runService.Heartbeat:Connect(function(deltaTime)
-		debug.profilebegin('Esp')
 		--self:Update(deltaTime);
 		self:Render(deltaTime);
-		debug.profileend()
 	end);
 end
 
@@ -490,9 +488,7 @@ function InstanceObject:Construct()
 	self.text.Center = true;
 
 	self.renderConnection = runService.Heartbeat:Connect(function(deltaTime)
-		debug.profilebegin('EspInstance')
 		self:Render(deltaTime);
-		debug.profileend()
 	end);
 end
 
@@ -656,7 +652,6 @@ function EspInterface.AddInstance(instance, options)
 	local cache = EspInterface._objectCache;
 	if cache[instance] then
 		warn("Instance handler already exists.");
-		cache[instance][1].options = options
 	else
 		cache[instance] = { InstanceObject.new(instance, options) };
 	end
