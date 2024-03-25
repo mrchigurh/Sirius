@@ -190,6 +190,12 @@ function EspObject:Destruct()
 		self.bin[i]:Remove();
 	end
 
+	for index, object in next, EspInterface._objectCache do
+		if object == self then
+			EspInterface._objectCache[index] = nil;
+		end
+	end
+
 	clear(self);
 end
 
