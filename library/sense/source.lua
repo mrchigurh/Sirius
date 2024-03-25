@@ -178,8 +178,10 @@ function EspObject:Construct()
 	};
 
 	self.renderConnection = runService.Heartbeat:Connect(function(deltaTime)
+		debug.profilebegin('Esp')
 		self:Update(deltaTime);
 		self:Render(deltaTime);
+		debug.profileend()
 	end);
 end
 
@@ -488,7 +490,9 @@ function InstanceObject:Construct()
 	self.text.Center = true;
 
 	self.renderConnection = runService.Heartbeat:Connect(function(deltaTime)
+		debug.profilebegin('EspInstance')
 		self:Render(deltaTime);
+		debug.profileend()
 	end);
 end
 
