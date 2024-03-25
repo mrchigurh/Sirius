@@ -646,6 +646,7 @@ function EspInterface.AddInstance(instance, options)
 	local cache = EspInterface._objectCache;
 	if cache[instance] then
 		warn("Instance handler already exists.");
+		cache[instance][1].options = options
 	else
 		cache[instance] = { InstanceObject.new(instance, options) };
 	end
