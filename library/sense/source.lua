@@ -179,7 +179,9 @@ function EspObject:Construct()
 
 	self.renderConnection = runService.Heartbeat:Connect(function(deltaTime)
 		--self:Update(deltaTime);
+		debug.profilebegin('ESP')
 		self:Render(deltaTime);
+		debug.profileend()
 	end);
 end
 
@@ -430,7 +432,9 @@ end
 function ChamObject:Construct()
 	self.highlight = Instance.new("Highlight", container);
 	self.updateConnection = runService.Heartbeat:Connect(function()
+		debug.profilebegin('Cham ESP')
 		self:Update();
+		debug.profileend()
 	end);
 end
 
@@ -488,7 +492,9 @@ function InstanceObject:Construct()
 	self.text.Center = true;
 
 	self.renderConnection = runService.Heartbeat:Connect(function(deltaTime)
+		debug.profilebegin('Instance ESP')
 		self:Render(deltaTime);
+		debug.profileend()
 	end);
 end
 
